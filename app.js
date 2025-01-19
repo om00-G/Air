@@ -22,7 +22,7 @@ const passport =require("passport")
 const LocalStrategy =require("passport-local")
 const User =require("./models/user.js")
 
-// const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+
 const dbURl= process.env.ATLASDB_URL;
 
 main()
@@ -67,9 +67,7 @@ const sessionOptions = {
     },
     }; 
 
-//     app.get("/", (req, res) => {
-//     res.send("Hey, I'm root");
-// })
+
 
 app.use(session(sessionOptions))
 app.use(flash())
@@ -88,14 +86,7 @@ app.use((req,res,next)=>{
     next(); 
 })
 
-// app.get("/demo", async(req,res)=>{
-//     let fakeUser= new User({
-//         email:"omgho@991",
-//         username: "om",
-//     })
-//     let registerUser = await User.register(fakeUser,"hwllo123554")
-//     res.send(registerUser)
-// })
+
 
 
 app.use("/listings", listingRouter)
