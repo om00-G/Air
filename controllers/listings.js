@@ -5,6 +5,7 @@ const geocodingClient = mbxGeocoding({ accessToken:mapToken });
 
 
 module.exports.index = async (req, res) => {
+   
     const allListings = await Listing.find({});
     res.render("./listings/index.ejs", { allListings });
 }
@@ -45,21 +46,7 @@ module.exports.createListing = async (req, res, next) => {
     req.flash("success","NEw Listing Created")
         res.redirect("/listings");
 
-    // console.log(req.body); // Debugging purpose
-    // // if(!req.body.listng){
-    // //     throw new ExpressError(400, "Send valid data for listing");
-    // // }
-    // let result = listingSchema.validate(req.body);
-    // console.log(result);
-    // if(result.error){
-    //     throw new ExpressError(400, result.error);
-    // }
-    //     const newListing = new Listing(req.body.listing);
-    //     newListing.owner = req.user._id;
-    //     await newListing.save();
-    //     req.flash("success","NEw Listing Created")
-    //     res.redirect("/listings");
-};
+
 
 module.exports.renderEditForm = async (req, res) => {
     let {id} = req.params;
@@ -104,4 +91,4 @@ module.exports.destroyListing = async (req, res) => {
     console.log(deletedListing);
         req.flash("success","Listing Deleted!")
     res.redirect("/listings");
-};
+}};
